@@ -28,7 +28,7 @@ function retweetRecent() {
     });
 }
 
-function getStatus() {
+function getTheirStatus() {
   var stream = T.stream('statuses/filter', { track: ['learning', 'keys', 'fun'] })
 
   stream.on('tweet', function (tweet) {
@@ -36,12 +36,30 @@ function getStatus() {
   })
 }
 
-function getOurStatus() {
+function getOurStatusStream() {
   var stream = T.stream('user')
-
   stream.on('tweet', function (tweet) {
     console.log(tweet);
-  })
+  });
+}
+
+function getOurStatus() {
+  var stream = T.stream('user')
+  var statuses = T.get('statuses/user_timeline')
+  console.log("first status", statuses);
+  console.log("first stream", statuses);
+
+  stream.on('tweet', function (tweet) {
+    console.log("tweet", tweet);
+    var statuses = T.get('user');
+    console.log("second status", statuses);
+  });
+}
+
+function geet(){
+  T.get('search/tweets', { q: 'fun', screen_name: 'tweetthawt', count: 100 }, function(err, data, response) {
+  console.log(data)
+})
 }
 
 function postStatus(input){
@@ -49,7 +67,8 @@ function postStatus(input){
   console.log(data)
 })
 }
+geet();
 // retweetRecent();
-getOurStatus();
-postStatus('I hopefully see this in my console, obviously you people will');
-setInterval(postStatus('this is an autopost, happens every 5 seconds'), 5000);
+// getOurStatus();
+// postStatus('I hopefully see this in my console, obviously you people will');
+// setInterval(postStatus('this is an autopost, happens every 5 seconds'), 5000);

@@ -36,11 +36,7 @@ router.post('/signup', function(req, res, next) {
              .returning('*')
              .then(function (users) {
                const user = users[0];
-               res.json({
-                 id: user.id,
-                 name: user.name,
-                 email: user.email,
-               })
+               res.redirect('/')
              })
 
          } else {

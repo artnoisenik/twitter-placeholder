@@ -1,18 +1,24 @@
 <div id="twitterTwitterTwitter">
-  <header>
-    <h2>Twitter-Placeholder</h2>
-    <h3>Most recent tweet: </h3>
-    <div id="recentTweet">
-      {{title}}
-    </div>
-  </header>
-  <main id="twitterPage">
-    <form method="post" action="/twitter">
-    <div id="tweetForm" class="demo-card-wide mdl-card mdl-shadow--2dp">
-      <input type="text" placeholder="Tweet Something!" id="tweetInput" name="tweetInput" maxlength="140">
-      <button href="#" id="tweetBtn" name="tweetBtn">Tweet</button>
-    </div>
-    </form>
+
+
+
+<header>
+  <div class="loader">
+  <span><h2>Twitter-Placeholder</h2></span>
+</div>
+<div class="loader">
+  <span><h3>Most recent tweet: <em id="recentTweet"> {{title}}</em></h3></span>
+</div>
+
+</header>
+<main id="twitterPage">
+
+  <form method="post" action="/twitter">
+  <div id="tweetForm" class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <input type="text" placeholder="Tweet Something!" id="tweetInput" name="tweetInput" maxlength="140">
+    <button href="#" id="tweetBtn" name="tweetBtn">Tweet</button>
+  </div>
+</form>
 
     <aside id="fun">
       <a class="twitter-timeline" href="https://twitter.com/TweetThawt" data-widget-id="733758917117759489" width="300" height="400" data-chrome="transparent">Tweets by @TweetThawt</a>

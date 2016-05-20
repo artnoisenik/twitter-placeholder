@@ -35,7 +35,8 @@ router.post('/signup', function(req, res, next) {
            knex('users').insert(data)
              .returning('*')
              .then(function (users) {
-               res.redirect('/')
+               console.log(users);
+               res.redirect('/twitter')
              })
 
          } else {
@@ -46,7 +47,7 @@ router.post('/signup', function(req, res, next) {
               if (result) {
                 var validPassword = bcrypt.compareSync(req.body.password, result.password)
                 if (validPassword) {
-                  res.redirect('/')
+                  res.redirect('/twitter')
                 }
               } else {
                 res.status(422).json({

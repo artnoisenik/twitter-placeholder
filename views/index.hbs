@@ -1,7 +1,5 @@
 {{title}}
-{{#if name}}
-{{this}}
-{{/if}}
+
 <main>
   <form method="post" action="/users/signup">
     <div id="signInForm" class="demo-card-wide mdl-card mdl-shadow--2dp">
@@ -10,12 +8,6 @@
       <input type="password" placeholder="password" name="password" id="passwordInput">
       <button name="signUpBtn" id="signUpBtn">Sign Up</button>
       <button name="logInBtn" id="logInBtn">Log In</button>
-    </div>
-  </form>
-  <form>
-    <div id="tweetForm" class="demo-card-wide mdl-card mdl-shadow--2dp">
-      <input type="text" placeholder="Tweet Something!" id="tweetInput" name="tweetInput">
-      <button href="#" id="tweetBtn" name="tweetBtn">Tweet</button>
     </div>
   </form>
 </main>

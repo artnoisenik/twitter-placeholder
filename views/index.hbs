@@ -1,10 +1,13 @@
 {{title}}
+{{#if name}}
+{{this}}
+{{/if}}
 <main>
   <form method="post" action="/users/signup">
     <div id="signInForm">
       <input type="text" placeholder="name" name="name" id="nameInput">
-      <input type="text" placeholder="email" name="emailInput" id="emailInput">
-      <input type="password" placeholder="password" name="passwordInput" id="passworkInput">
+      <input type="text" placeholder="email" name="email" id="emailInput">
+      <input type="password" placeholder="password" name="password" id="passworkInput">
       <button name="signUpBtn" id="signUpBtn">Sign Up</button>
       <button name="logInBtn" id="logInBtn">Log In</button>
     </div>

@@ -46,18 +46,15 @@ function getOurStatusStream() {
   });
 }
 
-function getOurStatus() {
-  var stream = T.stream('user')
-  var statuses = T.get('statuses/user_timeline')
-  console.log("first status", statuses);
-  console.log("first stream", statuses);
-
-  stream.on('tweet', function (tweet) {
-    console.log("tweet", tweet);
-    var statuses = T.get('user');
-    console.log("second status", statuses);
-  });
-}
+// function getOurStatus() {
+//   var stream = T.stream('user')
+//   // var statuses = T.get('statuses/user_timeline')
+//   // console.log("first status", statuses);
+//   // console.log("first stream", statuses);
+//   stream.on('tweet', function (tweet) {
+//     return tweet;
+//   });
+// }
 
 function geet(){
   T.get('search/tweets', { q: 'fun', screen_name: 'tweetthawt', count: 100 }, function(err, data, response) {
@@ -75,9 +72,14 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Twitter-Placeholder'});
 });
 
-router.post('/twitter', function(req, res, next) {
-  postStatus(req.)
+router.get('/twitter', function(req, res, next) {
   res.render('twitter', { title: 'Twitter-Placeholder'});
+});
+
+router.post('/twitter', function(req, res, next) {
+    postStatus(req.body.tweetInput);
+    console.log(req.body.tweetInput);
+    res.render('twitter', { title: tweetdata});
 });
 
 

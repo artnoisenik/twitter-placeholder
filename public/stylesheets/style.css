@@ -83,7 +83,7 @@ h3 {
 
 }
 .container{
-  
+
 }
 
 #tweetForm {
@@ -114,4 +114,6 @@ h3 {
   font-size: 20px;
   box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
+   color: rgba(25, 200, 250, 0.5);;
+   box-shadow: 0 0 5px rgba(200,50,200,0.8);
 }

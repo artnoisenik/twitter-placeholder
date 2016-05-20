@@ -1,12 +1,15 @@
 {{title}}
 <main>
-  <form action="">
+  <form method="post" action="/users/signup">
     <div id="signInForm">
+      <input type="text" placeholder="name" name="name" id="nameInput">
       <input type="text" placeholder="email" name="emailInput" id="emailInput">
       <input type="password" placeholder="password" name="passwordInput" id="passworkInput">
-      <button href="#" name="signUpBtn" id="signUpBtn">Sign Up</button>
-      <button href="#" name="logInBtn" id="logInBtn">Log In</button>
+      <button name="signUpBtn" id="signUpBtn">Sign Up</button>
+      <button name="logInBtn" id="logInBtn">Log In</button>
     </div>
+  </form>
+  <form>
     <div id="tweetForm">
       <input type="text" placeholder="Tweet Something!" id="tweetInput" name="tweetInput">
       <button href="#" id="tweetBtn" name="tweetBtn">Tweet</button>

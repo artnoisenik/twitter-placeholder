@@ -1,12 +1,17 @@
+<div id="twitterTwitterTwitter">
+
+
+
 <header>
   <div class="loader">
   <span><h2>Twitter-Placeholder</h2></span>
 </div>
 <div class="loader">
-  <span><h3>Most recent tweet: {{title}}</h3></span>
+  <span><h3>Most recent tweet: <em id="recentTweet"> {{title}}</em></h3></span>
 </div>
 
 </header>
+<main id="twitterPage">
 
   <form method="post" action="/twitter">
   <div id="tweetForm" class="demo-card-wide mdl-card mdl-shadow--2dp">
@@ -14,10 +19,10 @@
     <button href="#" id="tweetBtn" name="tweetBtn">Tweet</button>
   </div>
 </form>
-<div class="container">
 
-<aside class="fun">
-  <a class="twitter-timeline" href="https://twitter.com/TweetThawt" data-widget-id="733758917117759489">Tweets by @TweetThawt</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</aside>
+    <aside id="fun">
+      <a class="twitter-timeline" href="https://twitter.com/TweetThawt" data-widget-id="733758917117759489" width="300" height="400" data-chrome="transparent">Tweets by @TweetThawt</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </aside>
+  </main>
 </div>

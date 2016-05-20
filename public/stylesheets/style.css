@@ -6,3 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+
+#signInForm {
+  width: 500px;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+
+#signInForm input {
+  width: 450px;
+}
+
+#signInForm button {
+  width: 210px;
+}

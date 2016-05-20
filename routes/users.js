@@ -35,14 +35,24 @@ router.post('/signup', function(req, res, next) {
            knex('users').insert(data)
              .returning('*')
              .then(function (users) {
-               const user = users[0];
                res.redirect('/')
              })
 
          } else {
-           console.log("Email has already been taken");
-          res.status(422).json({
-            errors: ["Email has already been taken"]
+           return knex('users')
+            .whereRaw('lower(email) = ?', req.body.email.toLowerCase())
+            .first()
+            .then(function (result) {
+              if (result) {
+                var validPassword = bcrypt.compareSync(req.body.password, result.password)
+                if (validPassword) {
+                  res.redirect('/')
+                }
+              } else {
+                res.status(422).json({
+                  errors: ["Invalid email"]
+                })
+              }
           })
         }
       })

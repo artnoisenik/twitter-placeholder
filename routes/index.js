@@ -79,7 +79,7 @@ router.get('/twitter', function(req, res, next) {
 router.post('/twitter', function(req, res, next) {
     postStatus(req.body.tweetInput);
     console.log(req.body.tweetInput);
-    res.render('twitter', { title: tweetdata});
+    res.render('twitter', { title: req.body.tweetInput});
 });
 
 

@@ -40,6 +40,17 @@ h2 {
 h3 {
   margin-top: -100px;
 }
+
+#recentTweet {
+  font-size: 22px;
+  color:white;
+  text-shadow: 1px 2px 2px black;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 3px solid #E65100;
+  background: #FFCC80;
+}
+
 #signInForm {
   width: 500px;
   padding: 15px;

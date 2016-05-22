@@ -97,28 +97,28 @@ router.post('/twitter', function(req, res, next) {
     res.render('twitter', { title: req.body.tweetInput});
 });
 
-// router.get('/stream', function(req, res, next) {
-//   var tweets = [];
-//   var count = 0;
-//
-//   function filterFirehoseMe() {
-//     var stream = T.stream('statuses/filter', {track: ["#fun", 'fun', "@juliet", "JULIET", "#JULIET"]})
-//     stream.on('tweet', function (tweet) {
-//       count++;
-//       console.log(tweet);
-//       if (count <= 6) {
-//         tweets.push(tweet);
-//       }
-//       else {
-//         stream.stop();
-//         res.render('streaming', {title: "fun things", list: tweets})
-//       }
-//     })
-//   }
-//   filterFirehoseMe();
-// });
-
 router.get('/stream', function(req, res, next) {
+  var tweets = [];
+  var count = 0;
+
+  function filterFirehoseMe() {
+    var stream = T.stream('statuses/filter', {track: ["#fun", 'fun', "@juliet", "JULIET", "#JULIET"]})
+    stream.on('tweet', function (tweet) {
+      count++;
+      console.log(tweet);
+      if (count <= 10) {
+        tweets.push(tweet);
+      }
+      else {
+        stream.stop();
+        res.render('streaming', {title: "fun things", list: tweets})
+      }
+    })
+  }
+  filterFirehoseMe();
+});
+
+router.get('/json', function(req, res, next) {
   var tweets = [];
   var count = 0;
 

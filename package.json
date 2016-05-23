@@ -17,6 +17,7 @@
     "knex": "^0.11.3",
     "morgan": "~1.6.1",
     "pg": "^4.5.5",
+    "replacestream": "^4.0.0",
     "serve-favicon": "~2.3.0",
     "twit": "^2.2.4"
   }

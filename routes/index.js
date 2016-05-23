@@ -1,6 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var Twit = require('twit');
+var replaceStream = require('replacestream');
+var fs = require('fs');
+
+var rStream = fs.createReadStream('twitter_firehose_tweets.txt')
+    .pipe(replaceStream(/#Juliet/g, '#Juli0'))
+    .pipe(replaceStream(/#JULIET/g, '#JULI0'));
+
+var wStream = fs.createWriteStream('twitter_firehose_tweets.txt');
 
 var T = new Twit({
   consumer_key: 'gWKjJ2OnCNmXLKwOqfyfaQTyb',
@@ -45,16 +53,23 @@ function getOurStatusStream() {
     console.log(tweet);
   });
 }
-
-// function getOurStatus() {
-//   var stream = T.stream('user')
-//   // var statuses = T.get('statuses/user_timeline')
-//   // console.log("first status", statuses);
-//   // console.log("first stream", statuses);
-//   stream.on('tweet', function (tweet) {
+//
+// function filterFirehoseMe() {
+//   var stream = T.stream('statuses/filter', { track: ["#juliet", "@juliet", "JULIET", "#JULIET"] })
+//   stream.on('tweet', function(tweet){
 //     return tweet;
-//   });
+//   })
 // }
+
+function getOurStatus() {
+  var stream = T.stream('user')
+  var statuses = T.get('statuses/user_timeline')
+  console.log("first status", statuses);
+  console.log("first stream", statuses);
+  stream.on('tweet', function (tweet) {
+    return tweet;
+  });
+}
 
 function geet(){
   T.get('search/tweets', { q: 'fun', screen_name: 'tweetthawt', count: 100 }, function(err, data, response) {
@@ -82,5 +97,51 @@ router.post('/twitter', function(req, res, next) {
     res.render('twitter', { title: req.body.tweetInput});
 });
 
+router.get('/stream', function(req, res, next) {
+  var tweets = [];
+  var count = 0;
 
+  function filterFirehoseMe() {
+    var stream = T.stream('statuses/filter', {track: ["#fun", 'fun', "@juliet", "JULIET", "#JULIET"]})
+    stream.on('tweet', function (tweet) {
+      count++;
+      console.log(tweet);
+      if (count <= 10) {
+        tweets.push(tweet);
+      }
+      else {
+        stream.stop();
+        res.render('streaming', {title: "fun things", list: tweets})
+      }
+    })
+  }
+  filterFirehoseMe();
+});
+
+router.get('/json', function(req, res, next) {
+  var tweets = [];
+  var count = 0;
+
+  function filterFirehoseMe() {
+    var stream = T.stream('statuses/filter', {track: ["#fun", 'fun', "@juliet", "JULIET", "#JULIET"]})
+    stream.on('tweet', function (tweet) {
+      count++;
+        if (count <= 10) {
+          tweets.push(tweet);
+      }
+        else {
+          stream.stop();
+          res.json({list: tweets})
+         }
+       })
+    }
+    filterFirehoseMe();
+  });
+
+  // for(var i = 0; i<=5;i++){
+  //   filterFirehoseMe();
+  // }
+  // if(tweets.length === 5){
+  //   res.json({tweed: tweets})
+  // }
 module.exports = router;

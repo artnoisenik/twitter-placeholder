@@ -61,15 +61,15 @@ function getOurStatusStream() {
 //   })
 // }
 
-// function getOurStatus() {
-//   var stream = T.stream('user')
-//   // var statuses = T.get('statuses/user_timeline')
-//   // console.log("first status", statuses);
-//   // console.log("first stream", statuses);
-//   stream.on('tweet', function (tweet) {
-//     return tweet;
-//   });
-// }
+function getOurStatus() {
+  var stream = T.stream('user')
+  var statuses = T.get('statuses/user_timeline')
+  console.log("first status", statuses);
+  console.log("first stream", statuses);
+  stream.on('tweet', function (tweet) {
+    return tweet;
+  });
+}
 
 function geet(){
   T.get('search/tweets', { q: 'fun', screen_name: 'tweetthawt', count: 100 }, function(err, data, response) {
